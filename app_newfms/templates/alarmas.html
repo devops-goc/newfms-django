@@ -1,0 +1,58 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<div class="table-responsive">
+
+    <table id="example" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">HUB</th>
+                <th scope="col">TEC</th>
+                <th scope="col">FIL</th>
+                <th scope="col">COD</th>
+                <th scope="col">AMO</th>
+                <th scope="col">DESC</th>
+                <th scope="col">SEV</th>
+                <th scope="col">FIRST</th>
+                <th scope="col">LAST</th>
+                <th scope="col">CONT</th>
+                <th scope="col">USER</th>
+                <th scope="col">ACK / DEL</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+
+            {% for p in alms %}
+            <tr>
+                <td>{{p.HUB}}</td>
+                <td>{{p.TECNOLOGIA}}</td>
+                <td>{{p.FILTRO}}</td>
+                <td>{{p.CODIGO}}</td>
+                <td>{{p.AMO}}</td>
+                <td>{{p.DESCRIPCION}}</td>
+                <td>{{p.SEVERIDAD}}</td>
+                <td>{{p.FIRSTTIME|date:"Y-m-d H:i:s"}}</td>
+                <td>{{p.LASTTIME|date:"Y-m-d H:i:s"}}</td>
+                <td>{{p.CONTADOR}}</td>
+                <td>{{p.USER}}</td>
+                <td>
+                    <a href="{% url 'ack' p.ID %}" title="Acknowledge"> ✔</a> &nbsp;&nbsp;&nbsp; 
+                    <a href="{% url 'delete' p.ID %}" title="Delete">✘</a> </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function () {
+        var table = $('#example').DataTable(
+            {
+                "lengthMenu": [[15, 25, 50, 100, -1], [15, 25, 50, 100, "All"]],
+                "order": [[8, "desc"]]
+            }
+        );
+    });
+</script>
+
+{% endblock %}
