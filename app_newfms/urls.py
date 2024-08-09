@@ -18,8 +18,8 @@ urlpatterns = [
     path('ack/<int:id>', views.ack, name='ack'),
     path('delete/<int:id>', views.delete, name='delete'),
 
-    path('tecnologia/<string:buscar>', views.all_tecnologia, name='tecnologia'),
-    path('filtro/<string:buscar>', views.all_filtro, name='filtro'),
-    path('codigo/<string:buscar>', views.all_codigo, name='codigo'),
+    path('tecnologia/<str:buscar>', views.all_tecnologia, name='tecnologia'),
+    path('filtro/<str:buscar>', views.all_filtro, name='filtro'),
+    path('codigo/<str:buscar>', views.all_codigo, name='codigo'),
 
 ]
