@@ -31,7 +31,11 @@
                 <td>{{p.CODIGO}}</td>
                 <td>{{p.AMO}}</td>
                 <td>{{p.DESCRIPCION}}</td>
-                <td>{{p.SEVERIDAD}}</td>
+                <td>
+                   <span class="{% if p.SEVERIDAD == 'CR' %}badge text-bg-danger{% elif p.SEVERIDAD == 'WN' %}badge text-bg-warning{% elif p.SEVERIDAD == 'MN' %}badge text-bg-light{% elif p.SEVERIDAD == 'NM' %}badge text-bg-success{% else %}badge text-bg-secondary{% endif %}">
+                        {{p.SEVERIDAD}}
+                   </span>
+                </td>
                 <td>{{p.FIRSTTIME|date:"Y-m-d H:i:s"}}</td>
                 <td>{{p.LASTTIME|date:"Y-m-d H:i:s"}}</td>
                 <td>{{p.CONTADOR}}</td>
