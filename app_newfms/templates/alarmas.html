@@ -26,9 +26,9 @@
             {% for p in alms %}
             <tr>
                 <td>{{p.HUB}}</td>
-                <td>{{p.TECNOLOGIA}}</td>
-                <td>{{p.FILTRO}}</td>
-                <td>{{p.CODIGO}}</td>
+                <td><a href="{% url 'tecnologia' p.TECNOLOGIA %}" title="Filtrar por tecnologia">{{p.TECNOLOGIA}}</a></td>
+                <td><a href="{% url 'filtro' p.FILTRO %}" title="Filtrar por filtro">{{p.FILTRO}}</a></td>
+                <td><td><a href="{% url 'codigo' p.CODIGO %}" title="Filtrar por codigo">{{p.CODIGO}}</a></td></td>
                 <td>{{p.AMO}}</td>
                 <td>{{p.DESCRIPCION}}</td>
                 <td>

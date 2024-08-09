@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from .models import Alarma
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import user_passes_test, login_required
@@ -27,6 +27,30 @@ def index(request):
 def all_alm(request):
     p = Alarma.objects.all()
     return render(request, 'alarmas.html', {'alms': p})
+
+@login_required
+def all_tecnologia(request, buscar):
+    if buscar.isalnum():
+        p = Alarma.objects.filter(TECNOLOGIA=buscar)
+        return render(request, 'alarmas.html', {'alms': p})
+    else:
+        raise Http404(".")
+
+@login_required
+def all_codigo(request, buscar):
+    if buscar.isalnum():
+        p = Alarma.objects.filter(CODIGO=buscar)
+        return render(request, 'alarmas.html', {'alms': p})
+    else:
+        raise Http404(".")
+
+@login_required
+def all_filtro(request, buscar):
+    if buscar.isalnum():
+        p = Alarma.objects.filter(FILTRO=buscar)
+        return render(request, 'alarmas.html', {'alms': p})
+    else:
+        raise Http404(".")
 
 def es_admin(user):
     return user.groups.filter(name='nocadmin').exists() or user.is_staff
